@@ -21,4 +21,11 @@ class PriceSchedulerApiApplicationTest {
         // - data.sql loads the 4 test records
         // - JPA entity mappings are correct
     }
+
+    @Test
+    void main() {
+        // Test that the main method can be invoked without throwing exceptions.
+        // This improves code coverage for the application entry point.
+        PriceSchedulerApiApplication.main(new String[]{});
+    }
 }
