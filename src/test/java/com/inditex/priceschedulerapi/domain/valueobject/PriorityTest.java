@@ -84,4 +84,115 @@ class PriorityTest {
         // Verify immutability by ensuring attempt to mutate throws compilation error. (Not directly testable in runtime)
     }
 
+    /**
+     * Test for compareTo method when priorities are equal.
+     */
+    @Test
+    void testCompareTo_equal() {
+        // Arrange
+        Priority priority1 = Priority.of(5);
+        Priority priority2 = Priority.of(5);
+
+        // Act
+        int result = priority1.compareTo(priority2);
+
+        // Assert
+        assertEquals(0, result);
+    }
+
+    /**
+     * Test for compareTo method when first priority is higher.
+     */
+    @Test
+    void testCompareTo_higherPriority() {
+        // Arrange
+        Priority priority1 = Priority.of(10);
+        Priority priority2 = Priority.of(5);
+
+        // Act
+        int result = priority1.compareTo(priority2);
+
+        // Assert
+        assertTrue(result > 0);
+    }
+
+    /**
+     * Test for compareTo method when first priority is lower.
+     */
+    @Test
+    void testCompareTo_lowerPriority() {
+        // Arrange
+        Priority priority1 = Priority.of(3);
+        Priority priority2 = Priority.of(8);
+
+        // Act
+        int result = priority1.compareTo(priority2);
+
+        // Assert
+        assertTrue(result < 0);
+    }
+
+    /**
+     * Test for isHigherThan method when priority is higher.
+     */
+    @Test
+    void testIsHigherThan_true() {
+        // Arrange
+        Priority priority1 = Priority.of(10);
+        Priority priority2 = Priority.of(5);
+
+        // Act
+        boolean result = priority1.isHigherThan(priority2);
+
+        // Assert
+        assertTrue(result);
+    }
+
+    /**
+     * Test for isHigherThan method when priority is lower.
+     */
+    @Test
+    void testIsHigherThan_false() {
+        // Arrange
+        Priority priority1 = Priority.of(3);
+        Priority priority2 = Priority.of(8);
+
+        // Act
+        boolean result = priority1.isHigherThan(priority2);
+
+        // Assert
+        assertFalse(result);
+    }
+
+    /**
+     * Test for isHigherThan method when priorities are equal.
+     */
+    @Test
+    void testIsHigherThan_equal() {
+        // Arrange
+        Priority priority1 = Priority.of(5);
+        Priority priority2 = Priority.of(5);
+
+        // Act
+        boolean result = priority1.isHigherThan(priority2);
+
+        // Assert
+        assertFalse(result);
+    }
+
+    /**
+     * Test for toString method.
+     */
+    @Test
+    void testToString() {
+        // Arrange
+        Priority priority = Priority.of(42);
+
+        // Act
+        String result = priority.toString();
+
+        // Assert
+        assertEquals("42", result);
+    }
+
 }
